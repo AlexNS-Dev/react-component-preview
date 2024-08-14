@@ -12,6 +12,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.25.2",
     "@babel/standalone": "^7.25.3",
     "ace-builds": "^1.35.4",
     "babel-standalone": "^6.26.0",

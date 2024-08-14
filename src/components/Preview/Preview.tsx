@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import * as Babel from '@babel/standalone';
 import './Preview.css';
 import { FaPlay } from "react-icons/fa";
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 
 interface PreviewProps {
   code: string;
@@ -14,6 +15,8 @@ const Preview = ({ code, styles }: PreviewProps) => {
   const [appliedStyles, setAppliedStyles] = useState<string>(styles);
 
   const handleRun = () => {
+    setComponent(null); // Resetea el componente antes de ejecutar
+    setError(null);     // Resetea el error
     try {
       if (!code.trim()) {
         throw new Error('No code provided.');
@@ -50,8 +53,8 @@ const Preview = ({ code, styles }: PreviewProps) => {
       setError(null); // Limpiar errores previos
     } catch (err) {
       console.error('Preview ERROR: ', (err as Error));
-      setError(`Error rendering preview: ${(err as Error).message}`);
       setComponent(null); // Resetea el componente si hay error
+      setError(`Error rendering preview: ${(err as Error).message}`);
     }
   };
 
@@ -76,12 +79,13 @@ const Preview = ({ code, styles }: PreviewProps) => {
   return (
     <>
       <style>{appliedStyles}</style>
-      <div className='Preview'>
+      <div className='Preview' key={Date.now()}>
         <div className='preview-title'>
           <span>Preview</span>
           <button onClick={handleRun}><FaPlay />Run</button>
         </div>
         <div className='preview-render'>
+          <ErrorBoundary errorMessage={error}>
             {error ? (
               <div className='preview-error'>{error}</div>
             ) : Component ? (
@@ -89,6 +93,7 @@ const Preview = ({ code, styles }: PreviewProps) => {
             ) : (
               <div className='preview-default-message'>Please write some code and click Run.</div>
             )}
+          </ErrorBoundary>
         </div>
       </div>
     </>
