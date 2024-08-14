@@ -1,5 +1,5 @@
 // src/App.tsx
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import CodeEditor from './components/CodeEditor/CodeEditor';
 import Preview from './components/Preview/Preview';
