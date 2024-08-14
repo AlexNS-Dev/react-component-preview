@@ -40,6 +40,10 @@
 .Preview .preview-error,
 .Preview .preview-default-message {
     padding: 1em;
+    background-color: palevioletred;
+    color: whitesmoke;
+    border-radius: 1em;
+    margin: 1em;
 }
 
 .Preview .preview-render {
