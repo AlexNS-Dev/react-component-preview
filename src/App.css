@@ -1,0 +1,28 @@
+:root {
+  --title-size: 2.25rem;
+  --font-size-title: 1.6rem;
+  --font-size-body: .85rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: consolas;
+  box-sizing: border-box;
+}
+
+.App {
+  height: 100dvh;
+  width: 100dvw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+}
+
+@media (max-width: 768px) {
+  .App {
+    overflow: auto;
+    grid-template-columns: auto;
+    grid-template-rows: 200dvh 100dvh;
+  }
+}

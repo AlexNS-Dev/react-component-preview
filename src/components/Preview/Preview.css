@@ -1,0 +1,48 @@
+.Preview {
+    display: grid;
+    grid-template-rows: var(--title-size) auto;
+    overflow: hidden;
+}
+
+.Preview .preview-title {
+    background: #DD2D4A;
+    display: flex;
+    align-items: center;
+    padding: 0 1em;
+    font-size: var(--font-size-title);
+}
+
+.Preview .preview-title button {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: .5em;
+    margin-left: auto;
+    border: none;
+    background: #33333380;
+    color: whitesmoke;
+    border-radius: .5em;
+    padding: 0 .9em;
+    font-size: var(--font-size-body);
+    height: 80%;
+    width: 4rem;
+    transition: all .2s ease-out;
+}
+
+.Preview .preview-title button:hover {
+    box-shadow: 0 0 1em 0 whitesmoke;
+}
+
+.Preview .preview-error {
+    color: red;
+}
+
+.Preview .preview-error,
+.Preview .preview-default-message {
+    padding: 1em;
+}
+
+.Preview .preview-render {
+    height: 100%;
+    overflow: auto;
+}

@@ -1,0 +1,11 @@
+.CodeEditor {
+    display: grid;
+}
+
+.CodeEditor .component-editor {
+    background-color: #F28C28;
+}
+
+.CodeEditor .styles-editor {
+    background-color: #03a9f4;
+}
