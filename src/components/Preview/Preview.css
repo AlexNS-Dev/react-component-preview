@@ -40,10 +40,17 @@
 .Preview .preview-error,
 .Preview .preview-default-message {
     padding: 1em;
-    background-color: palevioletred;
-    color: whitesmoke;
     border-radius: 1em;
     margin: 1em;
+}
+
+.Preview .preview-error {
+    background-color: palevioletred;
+    color: whitesmoke;
+}
+
+.Preview .preview-default-message {
+    box-shadow: 0 .75em 1.2em .2em #a1a1a1;
 }
 
 .Preview .preview-render {
