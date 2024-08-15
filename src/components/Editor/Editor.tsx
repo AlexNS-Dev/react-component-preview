@@ -27,8 +27,9 @@ declare global {
 
 // Configurar el basePath
 if (typeof window !== 'undefined' && window.ace) {
-  window.ace.config.set('basePath', '/node_modules/ace-builds/src-noconflict/');
+  window.ace.config.set('basePath', 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/');
 }
+
 
 interface EditorProps {
   className?: string;
@@ -76,9 +77,10 @@ const Editor = ({ className, title, mode, defaultValue, theme = 'dracula', focus
         setOptions={{
           enableBasicAutocompletion: true,
           enableLiveAutocompletion: true,
-          enableSnippets: true,
+          enableSnippets: false,
           showLineNumbers: true,
           tabSize: 4,
+          useWorker: false,
         }}
       />
     </div>
