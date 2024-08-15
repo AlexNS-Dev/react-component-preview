@@ -2,7 +2,8 @@ import React, { Component, ErrorInfo } from 'react';
 
 interface ErrorBoundaryProps {
   children: React.ReactNode;
-  errorMessage?: string | null; // Permitir `null` como valor posible
+  errorMessage?: string | null;
+  className?: string;
 }
 
 interface ErrorBoundaryState {
@@ -36,7 +37,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     if (hasError) {
       // Muestra el mensaje de error proporcionado o un mensaje predeterminado
       return (
-        <div className='preview-error'>
+        <div className={this.props.className}>
           {errorMessage || `Something went wrong: ${error?.message}`}
         </div>
       );

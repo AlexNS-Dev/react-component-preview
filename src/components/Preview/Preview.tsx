@@ -85,7 +85,7 @@ const Preview = ({ code, styles }: PreviewProps) => {
           <button onClick={handleRun}><FaPlay />Run</button>
         </div>
         <div className='preview-render'>
-          <ErrorBoundary errorMessage={error}>
+          <ErrorBoundary errorMessage={error} className='preview-error'>
             {error ? (
               <div className='preview-error'>{error}</div>
             ) : Component ? (
