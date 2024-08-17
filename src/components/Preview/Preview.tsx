@@ -3,6 +3,7 @@ import * as Babel from '@babel/standalone';
 import './Preview.css';
 import { FaPlay } from "react-icons/fa";
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
+import cssValidator from 'w3c-css-validator';
 
 interface PreviewProps {
   code: string;
@@ -14,7 +15,26 @@ const Preview = ({ code, styles }: PreviewProps) => {
   const [error, setError] = useState<string | null>(null);
   const [appliedStyles, setAppliedStyles] = useState<string>(styles);
 
-  const handleRun = () => {
+  const validateCSS = async (css: string): Promise<void> => {
+    try {
+      const result = await cssValidator.validateText(css);
+      if (!result.valid) {
+        const errors = result.errors.map((error) => error.message).join(', ');
+        setError(errors);
+        throw new Error(`CSS validation error: ${errors}`);
+      }
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+        throw new Error(`Failed to validate CSS: ${err.message}`);
+      } else {
+        setError('Failed to validate CSS due to an unknown error.');
+        throw new Error('Failed to validate CSS due to an unknown error.');
+      }
+    }
+  };
+
+  const handleRun = async () => {
     setComponent(null); // Resetea el componente antes de ejecutar
     setError(null);     // Resetea el error
     try {
@@ -44,6 +64,8 @@ const Preview = ({ code, styles }: PreviewProps) => {
       const modifiedCode = transformedCode
         .replace(/export\s+default\s+(\w+);/, '') // Ajuste para manejar export default
         .replace(/import\s+[^;]+;/g, ''); // Eliminación de importaciones
+
+      validateCSS(styles);
 
       // Crear un nuevo componente usando el código modificado
       const componentCode = new Function('React', 'useState', 'useEffect', `${modifiedCode}; return ${componentName};`)(React, useState, useEffect);
