@@ -46,17 +46,26 @@ const Editor = ({ className, title, mode, defaultValue, theme = 'dracula', focus
 
   const editorRef = useRef<AceEditor>(null);
 
-  useEffect(() => {
+  // Función para ajustar el wrap dinámicamente según el tamaño de la ventana
+  const handleResize = () => {
     const editor = editorRef.current?.editor;
     if (editor) {
-      // Habilitar ajuste de línea
-      editor.setOption('wrap', true);
-      // Configurar el margen de impresión
-      editor.renderer.setOption('printMarginColumn', 80);
-
-      // Ajustar el tamaño del editor
-      editor.renderer.setOption('printMargin', 80); // Configura el margen de impresión
+      const isMobile = window.innerWidth <= 768;
+      editor.setOption('wrap', !isMobile);  // Ajusta el wrap basado en si es móvil o no
     }
+  };
+
+  useEffect(() => {
+    // Ejecutar handleResize al montar el componente
+    handleResize();
+
+    // Añadir listener para detectar cambios en el tamaño de la ventana
+    window.addEventListener('resize', handleResize);
+
+    // Limpiar el listener al desmontar el componente
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   return (
@@ -73,7 +82,6 @@ const Editor = ({ className, title, mode, defaultValue, theme = 'dracula', focus
         fontSize={fontSize}
         showPrintMargin={true}
         showGutter={true}
-        wrapEnabled={true}
         setOptions={{
           enableBasicAutocompletion: true,
           enableLiveAutocompletion: true,
