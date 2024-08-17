@@ -14,6 +14,7 @@ const Preview = ({ code, styles }: PreviewProps) => {
   const [Component, setComponent] = useState<React.FC | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [appliedStyles, setAppliedStyles] = useState<string>(styles);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const validateCSS = async (css: string): Promise<void> => {
     try {
@@ -37,6 +38,7 @@ const Preview = ({ code, styles }: PreviewProps) => {
   const handleRun = async () => {
     setComponent(null); // Resetea el componente antes de ejecutar
     setError(null);     // Resetea el error
+    setIsLoading(true);
     try {
       if (!code.trim()) {
         throw new Error('No code provided.');
@@ -77,6 +79,10 @@ const Preview = ({ code, styles }: PreviewProps) => {
       console.error('Preview ERROR: ', (err as Error));
       setComponent(null); // Resetea el componente si hay error
       setError(`Error rendering preview: ${(err as Error).message}`);
+    } finally {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 750);
     }
   };
 
@@ -107,7 +113,10 @@ const Preview = ({ code, styles }: PreviewProps) => {
           <button onClick={handleRun}><FaPlay />Run</button>
         </div>
         <div className='preview-render'>
-          <ErrorBoundary errorMessage={error} className='preview-error'>
+          { isLoading ? (
+            <div className='loading-spinner'>Loading...</div>
+          ) : (
+            <ErrorBoundary errorMessage={error} className='preview-error'>
             {error ? (
               <div className='preview-error'>{error}</div>
             ) : Component ? (
@@ -116,6 +125,8 @@ const Preview = ({ code, styles }: PreviewProps) => {
               <div className='preview-default-message'>Please write some code and click Run.</div>
             )}
           </ErrorBoundary>
+          )}
+          
         </div>
       </div>
     </>
