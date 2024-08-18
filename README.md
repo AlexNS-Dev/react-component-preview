@@ -21,7 +21,7 @@ Live Preview:
 ## Installation and Setup
 1. Clone the repository
 ```
-git clone https://github.com/alexns-dev/react-code-editor-preview.git
+git clone https://github.com/AlexNS-Dev/react-component-preview.git
 ```
 2. Install dependencies
 ```
