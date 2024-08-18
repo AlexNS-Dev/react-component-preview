@@ -3,11 +3,11 @@ This project is an interactive webpage that allows users to write code in React 
 
 ## Features
 - React Code Editor:
-![React Code Editor Screenshot](./screenshots/react_editor.png)
+![React Code Editor Screenshot](./public/screenshots/react_editor.png)
 - CSS Code Editor:
-![CSS Editor Screenshot](./screenshots/css_editor.png)
+![CSS Editor Screenshot](./public/screenshots/css_editor.png)
 - Live Preview:
-![Live Preview Screenshot](./screenshots/live_preview.png)
+![Live Preview Screenshot](./public/screenshots/live_preview.png)
 
 ## Installation and Setup
 1. Clone the repository
