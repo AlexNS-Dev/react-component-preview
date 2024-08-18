@@ -4,10 +4,19 @@ This project is an interactive webpage that allows users to write code in React 
 ## Features
 React Code Editor:
 ![React Code Editor Screenshot](./public/screenshots/react_editor.png)
+
 CSS Code Editor:
 ![CSS Editor Screenshot](./public/screenshots/css_editor.png)
+
 Live Preview:
 ![Live Preview Screenshot](./public/screenshots/live_preview.png)
+
+## Technologies Used
+* **React:** The main framework for building the component logic.
+* **Vite:** A fast build tool used to bundle and serve the project.
+* **Ace Editor:** Integrated code editors for an interactive coding experience.
+* **HTML5 and CSS3:** As the foundation for the page structure and general styles.
+* **GitHub Pages:** For deploying the project online.
 
 ## Installation and Setup
 1. Clone the repository
