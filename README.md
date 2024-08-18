@@ -2,12 +2,12 @@
 This project is an interactive webpage that allows users to write code in React and CSS in two separate editors. Once the code is written, you can render the preview to see the final result reflected live.
 
 ## Features
-- React Code Editor:
-- ![React Code Editor Screenshot](./public/screenshots/react_editor.png)
-- CSS Code Editor:
-- ![CSS Editor Screenshot](./public/screenshots/css_editor.png)
-- Live Preview:
-- ![Live Preview Screenshot](./public/screenshots/live_preview.png)
+React Code Editor:
+![React Code Editor Screenshot](./public/screenshots/react_editor.png)
+CSS Code Editor:
+![CSS Editor Screenshot](./public/screenshots/css_editor.png)
+Live Preview:
+![Live Preview Screenshot](./public/screenshots/live_preview.png)
 
 ## Installation and Setup
 1. Clone the repository
