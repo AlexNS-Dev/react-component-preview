@@ -42,4 +42,4 @@ npm run dev
 3. **Render:** Click the **Run** button or use the key combination **Ctrl + Enter** to update the preview section with your changes.
 
 ## Deployment
-This project is deployed using GitHub Pages. You can visit the live version at: [React Component Preview](https://alexns-dev.github.io/react-code-editor-preview/)
+This project is deployed using GitHub Pages. You can visit the live version at [React Component Preview](https://alexns-dev.github.io/react-code-editor-preview/)
