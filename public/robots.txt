@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://alexns-dev.github.io/react-component-preview/sitemap.xml
